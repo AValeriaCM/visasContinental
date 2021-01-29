@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
+import { AppSettings } from './app.settings';
+import { Settings } from './app.settings.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'visasContinental';
+  public settings: Settings;
+  constructor(public appSettings:AppSettings){
+      this.settings = this.appSettings.settings;
+  } 
+
+  ngOnInit() { }
 }
