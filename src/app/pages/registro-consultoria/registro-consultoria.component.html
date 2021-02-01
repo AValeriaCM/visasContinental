@@ -1,30 +1,45 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 <div align="center">
-    <form class="forms" align="center">
-        
+    <form id="my-table" class="forms" align="center" [formGroup]="form" #frmRegistro="ngForm" (ngSubmit)="downloadPDF()">
             <h1>REGISTRO CONSULTORIAS</h1>
         <mat-form-field>
-            <input matInput placeholder="Fecha">
+            <input formControlName="fecha" matInput placeholder="Fecha">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Nombres y Apellidos">
+            <input formControlName="nombreyapellido" matInput placeholder="Nombres y Apellidos">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="No. de identificacion">
+            <input formControlName="identificacion" matInput placeholder="No. de identificacion">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Correo electrónico">
+            <input formControlName="correo" matInput placeholder="Correo electrónico">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Cantidad">
+            <input formControlName="cantidad" matInput placeholder="Cantidad">
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
             <mat-label>Servicio</mat-label>
-            <mat-select>
-                <mat-option value="option">Option</mat-option>
-            </mat-select>
+            <select formControlName="servicio" matNativeControl required>
+                <option value="Consultoria">Consultoria</option>
+                <option value="Derechos Consulares">Derechos Consulares</option>
+                <option value="Formularios">Formularios</option>
+                <option value="Reserva Hotelera">Reserva Hotelera</option>
+            </select>
+            <mat-hint>Selecciona el servicio prestado</mat-hint>
         </mat-form-field>
         <br>
-        <button mat-raised-button slot="end" color="primary">Enviar</button>
+        <mat-form-field>
+            <mat-label>Zona</mat-label>
+            <select name="zona" matNativeControl required>
+                <option value="USA">USA</option>
+                <option value="canada">Canadá</option>
+            </select>
+            <mat-hint>Selecciona la zona</mat-hint>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]= "frmRegistro.invalid">
+            <mat-icon>done</mat-icon>
+            <span>Guardar</span>
+        </button>
         <br><br>
     </form>
 </div>

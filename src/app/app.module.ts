@@ -10,6 +10,8 @@ import { RegistroConsultoriaComponent } from './pages/registro-consultoria/regis
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CustomOverlayContainer } from './theme/utils/custom-overlay-container';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -30,7 +32,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppRoutingModule,
     BrowserAnimationsModule,
     PerfectScrollbarModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     AppSettings,
