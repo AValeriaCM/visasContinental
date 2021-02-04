@@ -1,0 +1,35 @@
+<div align="center">
+        <form id="my-table" class="forms" align="center">
+                <h1>REGISTRO CONSULTOR</h1>
+            
+            <mat-form-field>
+                <input formControlName="nombreyapellido" matInput placeholder="Nombres y Apellidos" required>
+                
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="identificacion" matInput placeholder="No. de identificacion" required>
+                
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="correo" matInput placeholder="Correo electrónico" required>
+                
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" formControlName="celular" matInput placeholder="Celular" required>
+                
+            </mat-form-field>
+            
+            <div class="button-row" align="center">
+                <button mat-raised-button color="primary" type="submit" >
+                    <mat-icon>done</mat-icon>
+                    <span>Guardar</span>
+                </button>
+                <button mat-raised-button color="warn" type="button" routerLink="/consultor">
+                    <mat-icon>highlight_off</mat-icon>
+                    <span>Cancelar</span>
+                </button>
+            </div>
+
+            <br><br>
+        </form>
+</div>

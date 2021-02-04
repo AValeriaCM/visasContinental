@@ -10,6 +10,10 @@ import 'jspdf-autotable';
 })
 export class RegistroConsultoriaComponent implements OnInit {
 
+  emailPattern: any = /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})/;
+  nombrePattern: any = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
+  fechaPattern: any = /^(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]|1[1-2])\1\d{4}$/;
+
   form: FormGroup;
 
   @ViewChild('htmlData') htmlData: ElementRef;
@@ -17,20 +21,21 @@ export class RegistroConsultoriaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.emptyForm();    
+  }
+
+  emptyForm(){
     this.form = new FormGroup({
       'fecha': new FormControl('', [Validators.required]),
-      'nombreyapellido': new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
-      'identificacion': new FormControl('', [Validators.required, Validators.maxLength(10)]),
-      'correo': new FormControl('', [Validators.required, Validators.email]),
+      'nombreyapellido': new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(40), Validators.pattern(this.nombrePattern)]),
+      'identificacion': new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(11)]),
+      'correo': new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       'cantidad': new FormControl('', [Validators.required]),
       'servicio': new FormControl('', [Validators.required]),
-      'zona': new FormControl('', [Validators.required, Validators.maxLength(10)])
+      'zona': new FormControl('', [Validators.required])
     });
   }
 
-  public prueba() {
-    console.log(this.form.value['nombreyapellido']);
-  }
 
   public downloadPDF(): void {
     // Default export is a4 paper, portrait, using millimeters for units
@@ -84,6 +89,34 @@ export class RegistroConsultoriaComponent implements OnInit {
     
     doc.save("comprobante-de-pago.pdf");
   }
+
+
+  public errorMessages = {
+    fecha:[
+      { type: 'required', message: 'Fecha es requerida' },
+      { type: 'maxlength', message: 'La fecha no es valida' },
+      { type: 'minlength', message: 'La fecha no es valida' }
+    ],
+    nombreyapellido:[
+      { type: 'required', message: 'Este campo es requerido' },
+      { type: 'maxlength', message: 'Los datos no son validos' },
+      { type: 'minlength', message: 'Los datos no son validos' },
+      { type: 'pattern', message: ' Los datos no son validos' }
+
+    ],
+    identificacion:[
+      { type: 'required', message: 'Identificacion es requerido' },
+      { type: 'maxlength', message: 'La Identificacion no es valida' },
+      { type: 'minlength', message: 'La Identificacion no es valida' }
+    ],
+    correo:[
+      { type: 'required', message: 'Correo es requerido' },
+      { type: 'pattern', message: 'El correo no es valido' }
+    ],
+    cantidad:[
+      { type: 'required', message: 'La cantidad es requerida' }
+    ]
+  };
 
   get fecha() {
     return this.form.get('fecha');

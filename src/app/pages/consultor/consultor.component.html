@@ -1,0 +1,52 @@
+<div [hidden]="route.children.length !== 0">
+    <table mat-table matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Foto </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.foto}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cedula">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="celular">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.direccion}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="correo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Correo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.correo}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-button color="primary" [routerLink]="['/fincas/editar/', element.idFinca]">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button color="accent">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+
+    <mat-paginator class="paginator" [pageSize]="pageSize" [pageSizeOptions]="[2, 5, 10, 25, 100]" [length]="cantidad"
+        ></mat-paginator>
+
+    <div class="example-label"></div>
+    <div class="example-button-row">
+    <button mat-fab color="primary" style="float: right; margin-right: 50px;" routerLink="agregar-consultor">
+            <mat-icon>plus_one</mat-icon>
+        </button>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

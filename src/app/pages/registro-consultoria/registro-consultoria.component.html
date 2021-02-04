@@ -1,45 +1,70 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
-<div align="center">
-    <form id="my-table" class="forms" align="center" [formGroup]="form" #frmRegistro="ngForm" (ngSubmit)="downloadPDF()">
-            <h1>REGISTRO CONSULTORIAS</h1>
-        <mat-form-field>
-            <input formControlName="fecha" matInput placeholder="Fecha">
-        </mat-form-field>
-        <mat-form-field>
-            <input formControlName="nombreyapellido" matInput placeholder="Nombres y Apellidos">
-        </mat-form-field>
-        <mat-form-field>
-            <input formControlName="identificacion" matInput placeholder="No. de identificacion">
-        </mat-form-field>
-        <mat-form-field>
-            <input formControlName="correo" matInput placeholder="Correo electrónico">
-        </mat-form-field>
-        <mat-form-field>
-            <input formControlName="cantidad" matInput placeholder="Cantidad">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Servicio</mat-label>
-            <select formControlName="servicio" matNativeControl required>
-                <option value="Consultoria">Consultoria</option>
-                <option value="Derechos Consulares">Derechos Consulares</option>
-                <option value="Formularios">Formularios</option>
-                <option value="Reserva Hotelera">Reserva Hotelera</option>
-            </select>
-            <mat-hint>Selecciona el servicio prestado</mat-hint>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Zona</mat-label>
-            <select name="zona" matNativeControl required>
-                <option value="USA">USA</option>
-                <option value="canada">Canadá</option>
-            </select>
-            <mat-hint>Selecciona la zona</mat-hint>
-        </mat-form-field>
-        <button mat-raised-button color="primary" type="submit" [disabled]= "frmRegistro.invalid">
-            <mat-icon>done</mat-icon>
-            <span>Guardar</span>
-        </button>
-        <br><br>
-    </form>
+<div id="sect1" align="center">
+        <form id="my-table" class="forms" align="center" [formGroup]="form" #frmRegistro="ngForm" (ngSubmit)="downloadPDF()">
+                <h1>REGISTRO VENTAS</h1>
+            <mat-form-field>
+                <input type="date" formControlName="fecha" matInput placeholder="Fecha" required>
+                <div *ngFor="let error of errorMessages.fecha">
+                    <ng-container *ngIf = "fecha.hasError(error.type) && (fecha.dirty || fecha.touched)">
+                      <small class="error-message">{{error.message}}</small>
+                    </ng-container>
+                </div>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="nombreyapellido" matInput placeholder="Nombres y Apellidos" required>
+                <div *ngFor="let error of errorMessages.nombreyapellido">
+                    <ng-container *ngIf = "nombreyapellido.hasError(error.type) && (nombreyapellido.dirty || nombreyapellido.touched)">
+                      <small class="error-message">{{error.message}}</small>
+                    </ng-container>
+                </div>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="identificacion" matInput placeholder="No. de identificacion" required>
+                <div *ngFor="let error of errorMessages.identificacion">
+                    <ng-container *ngIf = "identificacion.hasError(error.type) && (identificacion.dirty || identificacion.touched)">
+                      <small class="error-message">{{error.message}}</small>
+                    </ng-container>
+                </div>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="correo" matInput placeholder="Correo electrónico" required>
+                <div *ngFor="let error of errorMessages.correo">
+                    <ng-container *ngIf = "correo.hasError(error.type) && (correo.dirty || correo.touched)">
+                      <small class="error-message">{{error.message}}</small>
+                    </ng-container>
+                </div>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" formControlName="cantidad" matInput placeholder="Cantidad" required>
+                <div *ngFor="let error of errorMessages.cantidad">
+                    <ng-container *ngIf = "cantidad.hasError(error.type) && (cantidad.dirty || cantidad.touched)">
+                      <small class="error-message">{{error.message}}</small>
+                    </ng-container>
+                </div>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Servicio</mat-label>
+                <select formControlName="servicio" matNativeControl >
+                    <option value="Consultoria">Consultoria</option>
+                    <option value="Derechos Consulares">Derechos Consulares</option>
+                    <option value="Formularios">Formularios</option>
+                    <option value="Reserva Hotelera">Reserva Hotelera</option>
+                </select>
+                <mat-hint>Selecciona el servicio prestado</mat-hint>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field>
+                <mat-label>Zona</mat-label>
+                <select formControlName="zona" name="zona" matNativeControl >
+                    <option value="USA">USA</option>
+                    <option value="canada">Canadá</option>
+                </select>
+                <mat-hint>Selecciona la zona</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="frmRegistro.invalid">
+                <mat-icon>done</mat-icon>
+                <span>Guardar</span>
+            </button>
+            <br><br>
+        </form>
 </div>

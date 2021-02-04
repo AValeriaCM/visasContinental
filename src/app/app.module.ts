@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { AgregarConsultorComponent } from './pages/consultor/agregar-consultor/agregar-consultor.component';
+import { ConsultorComponent } from './pages/consultor/consultor.component';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: true,
   suppressScrollX: true               
@@ -25,7 +27,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [
     AppComponent,
     RegistroConsultoriaComponent,
-    InicioComponent
+    InicioComponent,
+    AgregarConsultorComponent,
+    ConsultorComponent
   ],
   imports: [
     BrowserModule,

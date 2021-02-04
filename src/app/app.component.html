@@ -13,61 +13,42 @@
     </div> 
 </div>-->
 
-<div class="example-container">
-  <mat-toolbar style="background-color: aliceblue !important; border-color: black; border-style: solid; border: 1px;" class="example-toolbar">
-    <!--<button mat-icon-button (click)="sidenav.toggle()">
+<div class="example-container" >
+  <mat-toolbar class="example-toolbar" style="background-color: rgba(188, 226, 248, 0.823);">
+    <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
       <mat-icon *ngIf="sidenav.opened">close</mat-icon>
-    </button>-->
+    </button>
 
-    <h1 class="example-app-name"><img src="assets/img/logo-visas.png" width="168" style="margin-left: 1%"/></h1>
+    <h1 class="example-app-name"><img src="assets/img/logo-visas.png" width="168" style="margin-left: 1%" /></h1>
 
     <span class="example-spacer"></span>
     <button mat-button style="background-color: transparent; " routerLink="/">INICIO</button>
-    <button mat-button style="background-color: transparent; " routerLink="/registroConsultoria">REGISTRO CONSULTORIA</button>
-
-    <!--<mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/login">
-        <mat-icon>account_box</mat-icon>
-        <span>Login</span>
-      </button>
-      <button mat-menu-item (click)="sidenav.opened = false">
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Cerrar Sesión</span>
-      </button>
-    </mat-menu>-->
 
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #sidenav style="width: 200px">
-<!--
-      <button mat-menu-item  (click)="sidenav.toggle()" style="cursor: pointer" routerLink="/departamento">
-        <mat-icon>map</mat-icon>
-        <span>Departamento</span>
+    <mat-sidenav #sidenav style="width: 15%;">
+      <button mat-menu-item class="item-menu" (click)="sidenav.toggle()"  routerLink="/">
+        <mat-icon>home</mat-icon>
+        <span>Inicio</span>
+    </button>
+    <mat-divider></mat-divider> 
+      <button mat-menu-item class="item-menu" (click)="sidenav.toggle()" routerLink="/consultor">
+        <mat-icon>contacts</mat-icon>
+        <span>Consultores</span>
     </button>
     <mat-divider></mat-divider>  
-    <button mat-menu-item (click)="sidenav.toggle()" style="cursor: pointer" routerLink="/ciudad">
-      <mat-icon>terrain</mat-icon>
-      <span>Ciudad</span>
+    <button mat-menu-item class="item-menu" (click)="sidenav.toggle()" routerLink="/registro-venta">
+      <mat-icon>shopping_cart</mat-icon>
+      <span>Ventas</span>
     </button>
     <mat-divider></mat-divider>  
-    <button mat-menu-item (click)="sidenav.toggle()" style="cursor: pointer" routerLink="/vehiculo">
-      <mat-icon>emoji_transportation</mat-icon>
-      <span>Vehiculo</span>
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item (click)="sidenav.toggle()" style="cursor: pointer" routerLink="/conductor">
-      <mat-icon>person</mat-icon>
-      <span>Conductor</span>
-    </button>-->
-    <mat-divider></mat-divider>    
-    
 
     </mat-sidenav>
-    
+
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-sidenav-container>
 </div>
