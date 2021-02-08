@@ -18,6 +18,10 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AgregarConsultorComponent } from './pages/consultor/agregar-consultor/agregar-consultor.component';
 import { ConsultorComponent } from './pages/consultor/consultor.component';
+import { InicioSesionComponent } from './pages/inicio-sesion/inicio-sesion.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { Not401Component } from './pages/not401/not401.component';
+import { Not404Component } from './pages/not404/not404.component';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: true,
   suppressScrollX: true               
@@ -29,7 +33,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RegistroConsultoriaComponent,
     InicioComponent,
     AgregarConsultorComponent,
-    ConsultorComponent
+    ConsultorComponent,
+    InicioSesionComponent,
+    ErrorComponent,
+    Not401Component,
+    Not404Component
   ],
   imports: [
     BrowserModule,
