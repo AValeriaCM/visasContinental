@@ -14,12 +14,11 @@ const routes: Routes = [
   {path: '', component: InicioComponent},
   {path: 'registro-venta', component: RegistroConsultoriaComponent},
   {path: 'consultor', component: ConsultorComponent, children : [
-    {path: 'agregar-consultor', component: AgregarConsultorComponent},
+    {path: 'agregar', component: AgregarConsultorComponent}
   ]},
   {path: 'inicio-sesion', component: InicioSesionComponent},
   {path: 'error/:status/:message', component: ErrorComponent},
   {path: 'not-401', component: Not401Component},
-  {path: '**', component: Not404Component},
 
 ];
 

@@ -22,6 +22,7 @@ import { InicioSesionComponent } from './pages/inicio-sesion/inicio-sesion.compo
 import { ErrorComponent } from './pages/error/error.component';
 import { Not401Component } from './pages/not401/not401.component';
 import { Not404Component } from './pages/not404/not404.component';
+import { HttpClientModule } from '@angular/common/http';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: true,
   suppressScrollX: true               
@@ -46,7 +47,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     AppSettings,

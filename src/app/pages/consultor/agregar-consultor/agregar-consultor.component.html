@@ -1,26 +1,30 @@
 <div align="center">
-        <form id="my-table" class="forms" align="center">
+        <form id="my-table" class="forms" align="center" [formGroup]= "form" #frmUsuario="ngForm" (ngSubmit)="guardar()">
                 <h1>REGISTRO CONSULTOR</h1>
             
             <mat-form-field>
-                <input formControlName="nombreyapellido" matInput placeholder="Nombres y Apellidos" required>
-                
+                <input formControlName="nombres" matInput placeholder="Nombres y Apellidos" required>
+                <mat-error *ngIf= "nombres.invalid && nombres.errors.required">Nombre es requerido</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input formControlName="identificacion" matInput placeholder="No. de identificacion" required>
-                
+                <mat-error *ngIf= "identificacion.invalid && identificacion.errors.required">Nombre es requerido</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input formControlName="correo" matInput placeholder="Correo electrónico" required>
-                
+                <mat-error *ngIf= "correo.invalid && correo.errors.required">Nombre es requerido</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input type="number" formControlName="celular" matInput placeholder="Celular" required>
-                
+                <input type="password" formControlName="contrasena" matInput placeholder="Contraseña" required>
+                <mat-error *ngIf= "contrasena.invalid && contrasena.errors.required">Nombre es requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" formControlName="telefono" matInput placeholder="Celular" required>
+                <mat-error *ngIf= "telefono.invalid && telefono.errors.required">Nombre es requerido</mat-error>
             </mat-form-field>
             
             <div class="button-row" align="center">
-                <button mat-raised-button color="primary" type="submit" >
+                <button mat-raised-button color="primary" type="submit" [disabled]= "frmUsuario.invalid" >
                     <mat-icon>done</mat-icon>
                     <span>Guardar</span>
                 </button>
