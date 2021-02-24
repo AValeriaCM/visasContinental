@@ -1,3 +1,4 @@
+import { Users } from './../../_model/Users';
 import { Router } from '@angular/router';
 import { LoginService } from './../../_service/login.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -23,7 +24,13 @@ export class InicioSesionComponent implements OnInit {
   }
 
   login(){
-    this.loginService.login(this.form.value['usuario'], this.form.value['contrasena']).subscribe(data => {
+
+    let usuario = new Users();
+    usuario.email = this.form.value['usuario'];
+    usuario.password = this.form.value['contrasenia'];
+
+    this.loginService.login(this.form.value['usuario'],this.form.value['contrasenia'] ).subscribe(() => {
+      console.log('entra login')
       //sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
       this.router.navigate(['']);
     });

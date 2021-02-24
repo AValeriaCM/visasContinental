@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  HOST: 'http://visas.ddns.net/api/'
+  HOST: 'http://visas.ddns.net/'
 };
 
 /*

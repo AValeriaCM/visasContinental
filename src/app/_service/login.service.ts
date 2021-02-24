@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
 
-  url: string = `${environment.HOST}auth`;
+  url: string = `${environment.HOST}api/auth`;
 
   constructor(private http: HttpClient,
     private router: Router) { }
@@ -18,7 +18,13 @@ export class LoginService {
       .set('email', usuario)
       .set('password', contrasena)
 
-      return this.http.post<any>(`${this.url}/login`, body);
+      let headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Headers', 'Content-Type');
+      headers.append('Access-Control-Allow-Methods', 'POST');
+      headers.append('Access-Control-Allow-Origin', '*');
+
+      return this.http.post<any>(`${this.url}/login`, body, {headers: headers});
+      //return this.http.post<any>(`/api/auth/login`, body);
   }
 
   /*cerrarSesion() {

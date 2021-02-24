@@ -1,8 +1,0 @@
-{
-    "/api/*":{
-        "target":"http://visas.ddns.net/",
-        "secure": false,
-        "logLevel": "debug",
-        "changeOrigin": true
-    }
-}
